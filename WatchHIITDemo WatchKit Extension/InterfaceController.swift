@@ -9,14 +9,31 @@
 import WatchKit
 import Foundation
 
+// MARK: InterfaceController: WKInterfaceController
 
 class InterfaceController: WKInterfaceController {
 
+    // MARK: Properties
+    
+    let myInterval: TimeInterval = 15.0
+    
+    private var isStarted: Bool = false
+    private var isRunning: Bool = true
+    private var timer = Timer()
+    
+    private var statusString = "Stopped"
+    private var workoutTime: TimeInterval = 0.0
+    private var intervalTime: TimeInterval = 0.0
+    
+    // MARK: IB Outlets
+    
     @IBOutlet var elapsedLabel: WKInterfaceLabel!
     @IBOutlet var statusLabel: WKInterfaceLabel!
     @IBOutlet var workoutTimer: WKInterfaceTimer!
     @IBOutlet var intervalTimer: WKInterfaceTimer!
     @IBOutlet var startStopButton: WKInterfaceButton!
+    
+    // MARK: Life Cycle
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -32,8 +49,52 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
         
     }
+    
+    // MARK: Helper Methods
+    
+    private func resetWKTimer(timer: WKInterfaceTimer, interval: TimeInterval) {
+        // NOTE: values > 0 for interval --> countdown | values <= 0 for interval --> stopwatch
+        timer.stop()
+        let time = Date(timeIntervalSinceNow: interval)
+        timer.setDate(time)
+        timer.start()
+    }
+    
+    func loopTimer1(interval: TimeInterval) {
+        if timer.isValid {
+            timer.invalidate()
+        }
+        timer = Timer.scheduledTimer(timeInterval: interval,
+                                                   target: self,
+                                                   selector: #selector(loopTimer1DidEnd),
+                                                   userInfo: nil,
+                                                   repeats: false)
+        resetWKTimer(timer: intervalTimer, interval: interval)
+        resetWKTimer(timer: workoutTimer, interval: 0)
+    }
+    
+    @objc func loopTimer1DidEnd(timer: Timer) {
+        statusLabel.setText("Stopped")
+        startStopButton.setTitle("Start")
+        isStarted = false
+        intervalTimer.stop()
+        workoutTimer.stop()
+        timer.invalidate()
+    }
+    
+    // MARK: IB Actions
 
     @IBAction func startStopButtonPressed() {
-        
+        isStarted = !isStarted // toggle bool value
+        if !isStarted {
+            statusLabel.setText("Run")
+            startStopButton.setTitle("Stop")
+            loopTimer1(interval: myInterval)
+        } else {
+            startStopButton.setTitle("Start")
+            workoutTimer.stop()
+            intervalTimer.stop()
+            timer.invalidate()
+        }
     }
 }

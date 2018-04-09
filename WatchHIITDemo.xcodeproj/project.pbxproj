@@ -11,7 +11,6 @@
 		11C2C9C9207BE1CD00202BA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2C9C8207BE1CD00202BA3 /* ViewController.swift */; };
 		11C2C9CC207BE1CD00202BA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2C9CA207BE1CD00202BA3 /* Main.storyboard */; };
 		11C2C9CE207BE1CE00202BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C2C9CD207BE1CE00202BA3 /* Assets.xcassets */; };
-		11C2C9D1207BE1CE00202BA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2C9CF207BE1CE00202BA3 /* LaunchScreen.storyboard */; };
 		11C2C9D6207BE1CE00202BA3 /* WatchHIITDemo WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 11C2C9D5207BE1CE00202BA3 /* WatchHIITDemo WatchKit App.app */; };
 		11C2C9DC207BE1CE00202BA3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2C9DA207BE1CE00202BA3 /* Interface.storyboard */; };
 		11C2C9DE207BE1CE00202BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C2C9DD207BE1CE00202BA3 /* Assets.xcassets */; };
@@ -69,7 +68,6 @@
 		11C2C9C8207BE1CD00202BA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11C2C9CB207BE1CD00202BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11C2C9CD207BE1CE00202BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		11C2C9D0207BE1CE00202BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11C2C9D2207BE1CE00202BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11C2C9D5207BE1CE00202BA3 /* WatchHIITDemo WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchHIITDemo WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C2C9DB207BE1CE00202BA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				11C2C9C8207BE1CD00202BA3 /* ViewController.swift */,
 				11C2C9CA207BE1CD00202BA3 /* Main.storyboard */,
 				11C2C9CD207BE1CE00202BA3 /* Assets.xcassets */,
-				11C2C9CF207BE1CE00202BA3 /* LaunchScreen.storyboard */,
 				11C2C9D2207BE1CE00202BA3 /* Info.plist */,
 			);
 			path = WatchHIITDemo;
@@ -256,7 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11C2C9D1207BE1CE00202BA3 /* LaunchScreen.storyboard in Resources */,
 				11C2C9CE207BE1CE00202BA3 /* Assets.xcassets in Resources */,
 				11C2C9CC207BE1CD00202BA3 /* Main.storyboard in Resources */,
 			);
@@ -322,14 +318,6 @@
 				11C2C9CB207BE1CD00202BA3 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		11C2C9CF207BE1CE00202BA3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11C2C9D0207BE1CE00202BA3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		11C2C9DA207BE1CE00202BA3 /* Interface.storyboard */ = {
