@@ -1,14 +1,51 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14111" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchHIITDemo_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" id="aId-5e-hVb">
+                            <items>
+                                <label alignment="left" text="Elapsed" id="yno-tA-FiE"/>
+                                <timer alignment="right" id="K6f-dp-J0z"/>
+                            </items>
+                        </group>
+                        <label alignment="center" verticalAlignment="center" text="Stopped" textAlignment="center" id="FZJ-vM-vSh">
+                            <fontDescription key="font" type="system" pointSize="22"/>
+                        </label>
+                        <timer alignment="center" verticalAlignment="center" id="Qqj-mc-qjL">
+                            <fontDescription key="font" type="system" pointSize="22"/>
+                        </timer>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="lvG-60-PbD">
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="15"/>
+                        </group>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="START / STOP" id="6qq-RA-e7V">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="backgroundColor" red="1" green="0.94117647058823528" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" type="system" weight="heavy" pointSize="15"/>
+                            <connections>
+                                <action selector="startStopButtonPressed" destination="AgC-eL-Hgc" id="uRt-2j-Wz0"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="elapsedLabel" destination="yno-tA-FiE" id="Xhr-YI-3Cf"/>
+                        <outlet property="intervalTimer" destination="Qqj-mc-qjL" id="8sL-VJ-7rf"/>
+                        <outlet property="startStopButton" destination="6qq-RA-e7V" id="mwD-hV-6H3"/>
+                        <outlet property="statusLabel" destination="FZJ-vM-vSh" id="5Lo-Vc-nfX"/>
+                        <outlet property="workoutTimer" destination="K6f-dp-J0z" id="Feb-Ga-8re"/>
+                    </connections>
+                </controller>
             </objects>
         </scene>
     </scenes>
