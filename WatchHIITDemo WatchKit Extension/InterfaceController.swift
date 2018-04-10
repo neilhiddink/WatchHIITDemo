@@ -60,15 +60,30 @@ class InterfaceController: WKInterfaceController {
         timer.start()
     }
     
+    // Simple Timer Object
     func loopTimer1(interval: TimeInterval) {
         if timer.isValid {
             timer.invalidate()
         }
         timer = Timer.scheduledTimer(timeInterval: interval,
                                                    target: self,
-                                                   selector: #selector(loopTimer1DidEnd),
+                                                   selector: #selector(loopTimer1DidEnd(timer:)),
                                                    userInfo: nil,
                                                    repeats: false)
+        resetWKTimer(timer: intervalTimer, interval: interval)
+        resetWKTimer(timer: workoutTimer, interval: 0)
+    }
+    
+    // Repeating Timer Object
+    func loopTimer2(interval: TimeInterval) {
+        if timer.isValid {
+            timer.invalidate()
+        }
+        timer = Timer.scheduledTimer(timeInterval: interval,
+                                     target: self,
+                                     selector: #selector(loopTimer2DidEnd(timer:)),
+                                     userInfo: interval,
+                                     repeats: true)
         resetWKTimer(timer: intervalTimer, interval: interval)
         resetWKTimer(timer: workoutTimer, interval: 0)
     }
@@ -82,14 +97,31 @@ class InterfaceController: WKInterfaceController {
         timer.invalidate()
     }
     
+    @objc func loopTimer2DidEnd(timer: Timer) {
+        isRunning != isRunning
+        resetWKTimer(timer: intervalTimer, interval: timer.userInfo as! TimeInterval)
+        if isRunning {
+            statusLabel.setText("Run")
+        } else {
+            statusLabel.setText("Walk")
+        }
+    }
+    
     // MARK: IB Actions
 
     @IBAction func startStopButtonPressed() {
         isStarted = !isStarted // toggle bool value
         if !isStarted {
-            statusLabel.setText("Run")
+            // statusLabel.setText("Run")
+            if isRunning {
+                statusLabel.setText("Run")
+            } else {
+                statusLabel.setText("Walk")
+            }
             startStopButton.setTitle("Stop")
-            loopTimer1(interval: myInterval)
+            
+            // loopTimer1(interval: myInterval)
+            loopTimer2(interval: myInterval)
         } else {
             startStopButton.setTitle("Start")
             workoutTimer.stop()
